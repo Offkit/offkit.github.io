@@ -1,4 +1,4 @@
-username.github.io
-==================
+Offkit website
+==============
 
 Website and Doc for Offkit

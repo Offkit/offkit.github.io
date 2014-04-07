@@ -1,0 +1,86 @@
+/******************************************************
+*
+* COMPONENTS/NAVIGATION/_NAVIGATION-RESPONSIVE-SMALL.LESS
+*
+* Requires Markup!
+*
+*******************************************************/
+
+.nav {
+	ul { 
+		list-style: none;
+		margin: 0;
+		padding: 0;	
+	}
+	li a { 
+		padding: (@font-margin/2) (@font-margin*2);
+		display: block;	
+		text-decoration: none;
+		&.nav-active{ 
+					background-color: lighten(@light-grey, 9%);
+					color: @dark-grey;
+					cursor: default;		
+					text-decoration: none;
+				}
+	}
+	
+	&.nav-vertical{
+		li{
+			a{ 
+				&.nav-active:after { 
+					content: "You are here";
+					float: right;
+					color: lighten(@light-grey, 4%);
+				}
+				&.nav-active{
+					color: 	 @dark-grey;
+					background-color: lighten(@light-grey, 9%);
+					cursor: default;
+				}
+			}
+			// submenu
+			ul{
+				a{
+					padding-left: (@font-margin*4);
+				}
+			}
+	
+		}
+	}
+}
+
+.nav-responsive {
+	#close-menu{
+		display: none;
+	}
+	ul{
+		height: 0;
+		.transition();
+		overflow: hidden;		
+		list-style: none;
+		margin: 0;
+		padding: 0;	
+		li{
+			width: 100%;
+			display:block;
+			text-decoration: none;
+			a{
+				
+			}
+		}
+	}
+		
+	&:target{
+		#close-menu{
+			display: block;
+		}
+		#open-menu{
+			display: none;
+		}
+		ul{
+			height:auto;
+			li{
+			}
+		}
+	}
+}

@@ -1,160 +1,3637 @@
-/*****************************************************************************/
-/*
-/* Common
-/*
-/*****************************************************************************/
+/*! OFFkit v1.0 | MIT License | offkit.github.io */
+/******************************************************
+*
+* STYLES
+*
+* Set differents mixins for styles
+* Table of content:
+* 01 - MAIN INITIALISATION
+* 02 - QUERIES
+* 03 - IE FIXE
+* 04 - PRINT SETTINGS
+*
+* TODO:
+* 04 REGLER LE PB DES MARGES !!!!! (comment pourquoi ? utiliser un rapport lineheight ? utiliser une valeur arbitraire genre 1em a chaque fois ?)
 
-/* Global Reset */
-* {
+* 05 var @offset = true; (or false => active ou pas les classes offset)
+* 06 PADDING OPTION IN GRID
+*******************************************************/
+/******************************************************
+* 01 - MAIN INITIALISATION
+*******************************************************/
+/* normalize.css v2.0.1 | MIT License | git.io/normalize */
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+/**
+ * Correct `block` display not defined in IE 8/9.
+ */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+/**
+ * Correct `inline-block` display not defined in IE 8/9.
+ */
+audio,
+canvas,
+video {
+  display: inline-block;
+}
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+/**
+ * Address styling not present in IE 8/9.
+ */
+[hidden] {
+  display: none;
+}
+/* ==========================================================================
+   Base
+   ========================================================================== */
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  vertical-align: baseline;
+}
+/**
+ * Remove default margin.
+ */
+body {
+  margin: 0;
+}
+/* ==========================================================================
+   Links
+   ========================================================================== */
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+a:focus {
+  outline: thin dotted;
+}
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+/**
+ * Address variable `h1` font size within `section` and `article` contexts in
+ * Firefox 4+, Safari 5, and Chrome.
+ */
+h1 {
+  font-size: 2em;
+}
+/**
+ * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ */
+b,
+strong {
+  font-weight: bold;
+}
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+dfn {
+  font-style: italic;
+}
+/**
+ * Address styling not present in IE 8/9.
+ */
+mark {
+  background: #ff0;
+  color: #000;
+}
+/**
+ * Correct font family set oddly in Safari 5 and Chrome.
+ */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  font-size: 1em;
+}
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+/**
+ * Set consistent quote types.
+ */
+q {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+/**
+ * Remove border when inside `a` element in IE 8/9.
+ */
+img {
+  border: 0;
+}
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+svg:not(:root) {
+  overflow: hidden;
+}
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+/**
+ * Address margin not present in IE 8/9 and Safari 5.
+ */
+figure {
+  margin: 0;
+}
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+/**
+ * Define consistent border, margin, and padding.
+ */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+/**
+ * 1. Correct `color` not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+/**
+ * 1. Correct font family not being inherited in all browsers.
+ * 2. Correct font size not being inherited in all browsers.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+}
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+button,
+input {
+  line-height: normal;
+}
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */
+}
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+/**
+ * 1. Address box sizing set to `content-box` in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */
+}
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+/**
+ * 1. Remove default vertical scrollbar in IE 8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+textarea {
+  overflow: auto;
+  /* 1 */
+  vertical-align: top;
+  /* 2 */
+}
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+/**
+ * Remove most spacing between table cells.
+ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/******************************************************
+*
+* _CONSTANTS.LESS
+*
+* Description:
+* Init constans variable for offKit.
+* a lot of offkit functions use these variables,
+* like in the _type.less or _grid.less files
+* please
+* DO NOT TOUCH !! 
+*
+*******************************************************/
+/******************************************************
+* 01 - ABSTRACT RATIOS 
+*******************************************************/
+/******************************************************
+* 01 - MEDIA RATIOS 
+*******************************************************/
+/******************************************************
+*
+* _VARIABLES.LESS
+*
+* Description:
+* Init variables for offKit (it might be the first file you want to take a look at)
+*
+* Required:
+* none
+*
+* Documentation:
+* for documentation, please see ||URL||
+*
+* Table of content:
+* 01 - COLORS
+* 02 - SELECTION STYLE
+* 03 - FONTS
+* 04 - GRID
+* 05 - MARGINS AND PADDINGS
+* 06 - FORMS
+* 07 - BUTTONS
+* 08 - TABLES
+* 09 - NAVIGATION
+* 10 - MISC SETTINGS
+* 11 - MISC CONFIGURATION
+*
+*******************************************************/
+/******************************************************
+* 01 - CONFIGURATION
+*******************************************************/
+/******************************************************
+* 01 - BREACKPOINTS
+*******************************************************/
+/******************************************************
+* 01 - COLORS
+*******************************************************/
+/******************************************************
+* 01 - SELECTION STYLE
+*******************************************************/
+::-moz-selection {
+  background: #82b4bf;
+  color: #ffffff;
+}
+::selection {
+  background: #82b4bf;
+  color: #ffffff;
+}
+::-moz-selection {
+  background: #82b4bf;
+  color: #ffffff;
+}
+/******************************************************
+* 02 - FONTS & type related
+*      used in _type.less
+*******************************************************/
+/******************************************************
+* 02 - GRID
+*	   used in _grid.less
+*******************************************************/
+/******************************************************
+* 02 - MARGINS AND PADDINGS
+*      used in _type.less, 
+*              _form.less,
+*              _table.less,
+*              _button.less,
+*              _navigation.less,
+*******************************************************/
+/******************************************************
+* 02 - FORMS
+*      used in _form.less, 
+*******************************************************/
+/******************************************************
+* 02 - BUTTONS
+*      used in _form.less, 
+*      	       _button.less, 
+*******************************************************/
+/******************************************************
+* 02 - TABLES
+*      used in _tables.less, 
+*******************************************************/
+/******************************************************
+* 02 - NAVIGATION
+*      used in _navigation.less, 
+*******************************************************/
+/******************************************************
+* 02 - MISC SETTINGS
+*******************************************************/
+/******************************************************
+*
+* MIXINS.LESS
+*
+* Set differents mixins for styles
+* Table of content:
+* 01 - IMPORT GENERICS
+* 02 - IMPORT GRID RELATED
+* 03 - IMPORT "VENDOR PREFIX" RELATED
+* 04 - INIT MIXINS
+*
+* Requiered:
+* _variables.less
+*
+*******************************************************/
+/******************************************************
+*
+* MIXINS/_APPEARANCE.LESS
+*
+* Description:
+* appearance prefixed
+*
+* Important: 
+* https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance
+*
+* “
+* Do not use this property on Web sites: not only is it non-standard, 
+* but its behavior changes from one browser to another. 
+* Even the keyword none does not have the same behavior on each 
+* form element across different browsers, and some do not support it at all.
+* ”
+*
+* This has led to some development tools, such as autoprefixer, 
+* from dropping any support for it ; therefor, the mixin 
+* will disregard the @auto-prefixer value
+*
+*
+* Default:
+* none
+*
+*******************************************************/
+/******************************************************/
+/******************************************************
+*
+* MIXINS/_CENTER.LESS
+*
+* Description:
+* Center block horizontally
+*
+*******************************************************/
+/******************************************************
+*
+* MIXINS/_CLEARFIX.LESS
+*
+* Description:
+* Clearfix as in http://nicolasgallagher.com/micro-clearfix-hack
+*
+*******************************************************
+*
+* For modern browsers
+* 1. The space content is one way to avoid an Opera bug when the
+*    contenteditable attribute is included anywhere else in the document.
+*    Otherwise it causes space to appear at the top and bottom of elements
+*    that are clearfixed.
+* 2. The use of `table` rather than `block` is only necessary if using
+*    `:before` to contain the top-margins of child elements.
+*
+*******************************************************/
+/******************************************************
+*
+* MIXINS/_FONT-FACE.LESS
+*
+* Description:
+* @font-face shortcut
+*
+* TO BE COMPLETED
+*
+*******************************************************/
+/******************************************************
+*
+* MIXINS/_OPACITY.LESS
+*
+* Description:
+* Generate opacity and it's ie filter counterpart
+* based on a value from 0 to 1
+*
+* Default: .5
+*
+*******************************************************/
+/******************************************************
+*
+* MIXINS/_PLACEMENT.LESS
+*
+* Description:
+* Generate position & top, right, bottom, left values
+*
+* Default: fixed, 0, 0, 0, 0
+*
+*******************************************************/
+/******************************************************
+*
+* MIXINS/_VP-PLACEHOLDER.LESS
+*
+* Description:
+* placeholder styling prefixed
+*
+* Requiered:
+* _variables.less (@auto-perfixer)
+* mixins/_opacity.less
+*
+*******************************************************/
+/******************************************************
+*
+* MIXINS/_REM.LESS
+*
+* Description:
+* conversion tool for setting up font-size
+* from a pixel value to a rem value with pixel fallback
+* or to set the pixel fallback from a rem value
+* do nothing if the unit is em.
+*
+* Requiered:
+* _variables.less (@basesize)
+*
+*******************************************************/
+/******************************************************
+*
+* MIXINS/_SIZE.LESS
+*
+* Description:
+* generate height and width values.
+* if only one argument is given, generate a square
+* if 2 arguments (width and height): generate a rectangle
+* if 4 arguments (index, index2, column width and gutterWidth),
+* generate a rectangle with a width of col-index 
+* and a height of col-index2
+*
+* Requiered:
+* a gridBasic should be set up first
+*
+*******************************************************/
+/******************************************************
+*
+* MIXINS/_GRID-MEASURES.LESS
+*
+* Description:
+* Generate widths, height or offset based on column counts
+*
+*******************************************************/
+/******************************************************
+*
+* MIXINS/_VP-ANIMATION.LESS
+*
+* Description:
+*
+* Requiered:
+* _variables.less (@auto-perfixer)
+*
+*******************************************************/
+/******************************************************
+*
+* MIXINS/_VP-FONT-FEATURE.LESS
+*
+* Description:
+* font-feature-settings prefixed
+* --
+* font-feature-settings : normal | <feature-tag-value> [, <feature-tag-value>]*
+*
+* Requiered:
+* _variables.less (@auto-perfixer)
+*
+* Default:
+* liga
+*
+* Note:
+* check this article for complete list
+* http://www.microsoft.com/typography/otspec/featurelist.htm
+*
+* Todo: afinate regex
+*
+*******************************************************/
+/******************************************************/
+/******************************************************
+*
+* MIXINS/_VP-BACKFACE-VISIBILITY.LESS
+*
+* Description:
+* backface-visibility prefixed
+*
+* Requiered:
+* _variables.less (@auto-perfixer)
+*
+* Default:
+* hidden
+*
+*******************************************************/
+/******************************************************
+*
+* MIXINS/_VP-BOX-SIZING.LESS
+*
+* Description:
+* background-clip prefixed (default: border-box)
+* background-clip: [border-box | padding-box ] [ , [border-box | padding-box ] ]* ;
+*
+* Requiered:
+* _variables.less (@auto-perfixer)
+*
+*******************************************************/
+/******************************************************
+*
+* MIXINS/_VP-BACKGROUND-GRADIENT.LESS
+*
+* Description:
+*
+* Requiered:
+* _variables.less (@auto-perfixer)
+*
+*******************************************************/
+/******************************************************
+*
+* MIXINS/_VP-BORDER-RADIUS.LESS
+*
+* Description:
+* border-radius prefixed (default: @rounded-value)
+* 
+* Requiered:
+* _variable.less (@rounded-value)
+* mixins/_vp-background-clip.less
+*
+*******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************
+*
+* MIXINS/_VP-BOX-SHADOW.LESS
+*
+* Description:
+* border-radius prefixed
+*
+* Requiered:
+* _variables.less
+*
+* Default:
+* @shadow-color, @shadow-h, @shadow-v, 
+* @shadow-blur, @shadow-spread 
+*
+*******************************************************/
+/* .box-shadow(0,0,4px,0,#444); */
+/* .box-shadow(none); */
+/******************************************************/
+/* multiplebox shadows or inset box shadows */
+/* .box-shadow(0 0 4px 0 #444, inset 0 0 5px 5px #222); */
+/******************************************************
+*
+* MIXINS/_VP-BOX-SIZING.LESS
+*
+* Description:
+* box-sizing prefixed (default: border-box)
+*
+* Requiered:
+* _variables.less (@auto-perfixer)
+*
+*******************************************************/
+/******************************************************
+*
+* MIXINS/_VP-COLUMNS.LESS
+*
+* Description:
+* column-gap, column-count, column-rule
+* and column shortcut prefixed
+*
+* Requiered:
+* _variables.less (@auto-perfixer)
+*
+*******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************
+*
+* MIXINS/_VP-FLEX.LESS
+*
+* Description:
+* flexboxes utilities prefixed
+*
+* Requiered:
+* _variables.less (@auto-perfixer)
+*
+*******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************
+*
+* MIXINS/_VP-HYPHENS.LESS
+*
+* Description:
+* hyphenation and break-word prefixed
+* --
+* hyphens:  none | manual | auto
+* word-break: normal | break-all | keep-all;
+*
+* Requiered:
+* _variables.less (@auto-perfixer)
+*
+* Default:
+* auto
+* normal
+*
+*******************************************************/
+/******************************************************/
+/******************************************************
+*
+* MIXINS/_VP-TRANSFORM.LESS
+*
+* Description:
+*
+* Requiered:
+* _variables.less (@auto-perfixer)
+*
+*******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************
+*
+* MIXINS/_VP-TRANSITION.LESS
+*
+* Description:
+*
+* Requiered:
+* _variables.less (@auto-perfixer)
+*
+*******************************************************/
+/******************************************************/
+/* multiple transition and delay */
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************/
+/******************************************************
+*
+* MIXINS/_VP-USER-SELECT.LESS
+*
+* Description:
+* user select prefixed
+*
+* Requiered:
+* _variables.less (@auto-perfixer)
+*
+* Used in:
+* _form.less
+*
+*******************************************************/
+/******************************************************
+* 07 - INITIALISATIONS MIXINS
+*******************************************************/
+/******************************************************
+*
+* MIXINS.LESS
+*
+* Set differents mixins for styles
+* Table of content:
+* 01 - COLORS
+* 02 - FONTS
+* 03 - UTILITARY VAR
+* 04 - UTILITARY CLASSES
+*
+*******************************************************/
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.clearfix:after {
+  clear: both;
+}
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
+.hidden {
+  display: none;
+}
+.show {
+  display: block;
+}
+.invisible {
+  position: absolute;
+  width: 1px;
+  /* Setting this to 0 make it invisible for VoiceOver */
+  height: 1px;
+  /* Setting this to 0 make it invisible for VoiceOver */
+  padding: 0;
+  margin: -1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+/******************************************************
+* 03 - LAYOUT RELATED CLASSES
+*******************************************************/
+.centered {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  float: none !important;
+}
+.centered:before,
+.centered:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.centered:after {
+  clear: both;
+}
+.centered:before,
+.centered:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.centered:after {
+  clear: both;
+}
+.no-margin {
+  margin: 0;
+}
+.no-padding {
+  padding: 0;
+}
+/******************************************************
+*
+* TYPE.LESS
+*
+* Set differents mixins for styles
+* Table of content:
+* 01 - TITLES
+* 02 - PARAGRAPHS
+*
+* TODO
+* SMALL CAPS
+* Probleme avec rem => pas de recalcul de la taille des titres et "small text" ... repasser en em ? (parceque bon c'est plus simple quand meme... a voir)
+* autre option => créer une fonction "update-font" qui recalcule les size-a, size-b… etc. et permet, a partir d'une taille de typo de réinitialiser la totale) en calculant a partir du ratio "nouvelle taille" / taille de base (@fontsize)
+les élément a réinitialiser (ou initialiser) seraient =>
+size-a … size-i & size-small, size-smaller
+h1 => h6
+.base-type();
+
+SIMPLIFIER LE PROCESS
+on choisi une basesize (la taille par défaut, 16px pour référence correspondant à 100% dans les navigateurs)
+	on choii une unité de base (px / em / rem)
+	on choisi une échelle typo (rem = em jusqu'ici)
+	OU ALORS, 
+	on choisi une taille de base seulement et un type d'échelle (les autre tailles seront calculée automatiquement)
+
+	on choisi les marges
+
+	cf
+http://type-scale.com/
+
+
+PAR AILLEURS
+ajouter des bool pour les indent, pilcrow… etc
+qui serviront à définir si oui ou non on génére la classe
+
+DONC +>
+   SI "px" alors .modular-scale(@unit, @scale) when ispixel(@unit)
+   Si "em" alors .modular-scale(@unit, @scale) when isem(@unit)
+   Si "rem" alors .modular-scale(@unit, @scale) when not(ispixel(@unit)) and not(when isem(@unit))
+      ici on utilise la mixins
+
+FONCTION "createSize"
+   Si à la main (mot clef "none" pour ratio) => passer directement au lacement de modularescale
+   Si on à rentré un ratio OU un mot clef,
+   	calculer les values de .size-a , b , c etc
+
+*******************************************************/
+/******************************************************
+* 01 - EXCLUSIVE FONT VARIABLES 
+* based on the awesome work of Zachary Kain (@zakkain) 
+* & Dennis Gaebel (@gryghostvisuals) for
+* http://typeplate.com
+*******************************************************/
+/******************************************************
+* 01 - EXCLUSIVE FONT MIXINS 
+* based on the awesome work of Zachary Kain (@zakkain) 
+* & Dennis Gaebel (@gryghostvisuals) for
+* http://typeplate.com
+*******************************************************/
+/*
+	Currently, less does not support dynamicly declared variables name,
+	We'll do it by hand until then
+	cf http://stackoverflow.com/questions/11198221/defining-variable-variables-using-less-css
+
+	//  @sizes-list: a, b, c, d, e, f, g, small, smaller;
+	// 	@length-sizes: length(@sizes-list);
+	// 	.generate-size-at(@index) when (@index > 0){
+	// 		@value: extract(@sizes-list, @index);
+	// 		.generate-size-at-index() when (isnumber(~"@{@manual-size-@{value}}")){
+	// 			~"@{@size-@{value}}": ~"@{@manual-size-@{value}}";
+	// 		}
+	// 		.generate-size-at-index() when not(isnumber(~"@{@manual-size-@{value}}")){
+	// 			@old-value: extract(@sizes-list, @index-1);
+	// 			~"@{@size-@{value}}": ~"@{@manual-size-@{old-value}}" * @typescale-ratio;
+	// 		}
+	// 		.generate-size-at-index(@index-1);
+	// 	}
+	// 	.generate-size-at(O){}
+	// 	.generate-size-at(1);
+*/
+/*
+
+OR BETTER => 
+
+@sizes-list: a, b, c, d, e, f, g, small, smaller;
+@length-sizes: length(@sizes-list);
+
+.generate-size-at(@index) when (@index > 0){
+	@value: extract(@sizes-list, @index);
+	
+	//if is number and base value
+	.size-@{value} when (isnumber(~"@{@manual-size-@{value}}")) and (@index = 1){ 
+		.modular-scale(~"@{@manual-size-@{value}}", @font-unit, true); 
+	}
+	
+	//if is not number and base value
+	.size-@{value} when not(isnumber(~"@{@manual-size-@{value}}")) and (@index = 1){ 
+		.modular-scale(@fontsize, @font-unit, true); 
+	}
+
+	//if is number and not base value
+	.size-@{value} when (isnumber(~"@{@manual-size-@{value}}")) and not(@index = 1){ 
+		.modular-scale(~"@{@manual-size-@{value}}", @font-unit, true); 
+	}
+	
+	//if is not number and not base value
+	.size-@{value} when not(isnumber(~"@{@manual-size-@{value}}")) and not(@index = 1){ 
+		@minor-value: extract(@sizes-list, @index - 1);
+		.modular-scale((~"@{@manual-size-@{minor-value}}" * @typescale-ratio), @font-unit, true); 
+	}
+
+	//if SMALL is not number and not base value
+	.size-@{value} when not(isnumber(~"@{@manual-size-@{value}}")) and (@value = small) and not(@index = 1){ 
+		@minor-value: extract(@sizes-list, 1); //size-a
+		.modular-scale((~"@{@manual-size-@{minor-value}}" / @typescale-ratio), @font-unit, true); 
+	}
+
+	//if SMALLER is not number and not base value
+	.size-@{value} when not(isnumber(~"@{@manual-size-@{value}}")) and (@value = small) and not(@index = 1){ 
+		@minor-value: extract(@sizes-list, @index - 1); //size-small
+		.modular-scale((~"@{@manual-size-@{minor-value}}" / @typescale-ratio), @font-unit, true); 
+	}
+
+	//recursive
+	.generate-size-at(@index - 1);
+}
+
+.generate-size-at(0){}
+.generate-size-at(1);
+
+*/
+.size-a {
+  font-size: 20px;
+  font-size: 1rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.size-b {
+  font-size: 20px;
+  font-size: 1rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.size-c {
+  font-size: 20px;
+  font-size: 1rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.size-d {
+  font-size: 24px;
+  font-size: 1.2rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.size-e {
+  font-size: 36px;
+  font-size: 1.8rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.size-f {
+  font-size: 44px;
+  font-size: 2.2rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.size-g {
+  font-size: 62.216px;
+  font-size: 3.1108rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.size-small {
+  font-size: 16px;
+  font-size: 0.8rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.size-smaller {
+  font-size: 12px;
+  font-size: 0.6rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+/******************************************************
+* 01 - SET BASE FONT
+*******************************************************/
+html {
+  font: 400 125%/1.4 "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+}
+body {
+  color: #191111;
+}
+/******************************************************
+* 01 - TITLES
+*
+* Put your styles for headings here
+*******************************************************/
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  color: #111111;
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  line-height: 1.2;
+  font-weight: 700;
+}
+h1,
+.h1 {
+  font-size: 44px;
+  font-size: 2.2rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+h2,
+.h2 {
+  font-size: 36px;
+  font-size: 1.8rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+h3,
+.h3 {
+  font-size: 24px;
+  font-size: 1.2rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+h4,
+.h4 {
+  font-size: 20px;
+  font-size: 1rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+h5,
+.h5 {
+  font-size: 20px;
+  font-size: 1rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+h6,
+.h6 {
+  font-size: 20px;
+  font-size: 1rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+p {
+  font-size: 20px;
+  font-size: 1rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+/******************************************************
+* 01 - INITIALISATION PARAGRAPH
+*******************************************************/
+p {
+  margin: 0 0 0.7em;
+}
+/******************************************************
+* 01 - PARAGRAPH STYLES
+* options:
+* A extra leading (default) margin bottom = lineheight (150% - 165%)
+* B Indent
+* C dropcap
+* D Graphic element (pilcrow)
+* E Rule
+*******************************************************/
+.leading p {
+  margin: 0 0 0.7em;
+}
+.leadingp {
+  margin: 0 0 0.7em;
+}
+.dropcap p:first-child {
+  margin: 0 0 0.6em;
+}
+.dropcap p:first-child:first-letter {
+  float: left;
+  font-size: 350%;
+  height: .7em;
+  line-height: .85em;
+  *line-height: 1em;
+  /* IE7 Only */
+  padding: 0 .1em 0 0;
+}
+.dropcap p:first-child:before {
+  content: none;
+}
+.dropcap p:first-child + p:first-letter {
+  float: none;
+  font-size: 1em;
+  height: auto;
+  line-height: 1.4;
+  padding: 0;
+}
+.dropcapp {
+  margin: 0 0 0.6em;
+}
+.dropcapp:first-letter {
+  float: left;
+  font-size: 350%;
+  height: .7em;
+  line-height: .85em;
+  *line-height: 1em;
+  /* IE7 Only */
+  padding: 0 .1em 0 0;
+}
+.dropcapp:before {
+  content: none;
+}
+.dropcapp + p:first-letter {
+  float: none;
+  font-size: 1em;
+  height: auto;
+  line-height: 1.4;
+  padding: 0;
+}
+.indent p {
+  margin: 0;
+}
+.indent p + p {
+  text-indent: 1.4em;
+}
+.indent p + p:before {
+  content: none;
+}
+.indentp {
+  margin: 0;
+}
+.indentp + p {
+  text-indent: 1.4em;
+}
+.indentp + p:before {
+  content: none;
+}
+.pilcrow p {
+  margin: 0;
+  position: relative;
+}
+.pilcrow p:before {
+  content: "\00B6";
+  display: inline-block;
+  left: -0.9em;
+  position: absolute;
+}
+.pilcrowp {
+  margin: 0;
+  position: relative;
+}
+.pilcrowp:before {
+  content: "\00B6";
+  display: inline-block;
+  left: -0.9em;
+  position: absolute;
+}
+/*
+On  garde ca ?
+.inline-pilcrow{
+	p{
+		margin-top: 0;
+		margin-bottom: 0;	
+		position: relative;
+		&:before{
+			content: "\00B6";
+			margin-right: 0.4em;
+			position: relative;
+		}
+	}
+}
+*/
+.rule p {
+  border-bottom: 0.1em solid #191111;
+  padding-bottom: 0.7em;
+  margin-bottom: 0.6em;
+  text-indent: 0;
+}
+.rule p:last-of-type {
+  border: none;
+}
+.rulep {
+  border-bottom: 0.1em solid #191111;
+  padding-bottom: 0.7em;
+  margin-bottom: 0.6em;
+  text-indent: 0;
+}
+.rulep:last-of-type {
+  border: none;
+}
+/******************************************************
+* 01 - other sizes
+*******************************************************/
+.small-text p {
+  font-size: 16px;
+  font-size: 0.8rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.small-text p:first-child {
+  margin-top: .3em;
+}
+.smaller-text p {
+  font-size: 12px;
+  font-size: 0.6rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.smaller-text p:first-child {
+  margin-top: .3em;
+}
+.small {
+  font-size: 12px;
+  font-size: 0.6rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+/******************************************************
+* 01 - LINKS
+*******************************************************/
+a {
+  color: #ff5c59;
+  text-decoration: none;
+}
+a:hover {
+  color: #ff110d;
+}
+/******************************************************
+* 01 - BLOCKQUOTES
+*******************************************************/
+/******************************************************
+* 01 - FIGURES
+*******************************************************/
+figure figcaption {
+  font-size: 16px;
+  font-size: 0.8rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  font-style: italic;
+  margin-bottom: 1.4em;
+}
+figure figcaption strong {
+  font-style: normal;
+}
+/******************************************************
+* 01 - CODE RELATED
+*******************************************************/
+pre {
+  display: block;
+  font-weight: 400;
+  border: 1px solid #b2b2b2;
+  font-family: "inconsolata", monaco;
+  font-size: 16px;
+  font-size: 0.8rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  padding: 0.7em;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+code {
+  background-color: #f5f5f5;
+  border: 1px solid #b2b2b2;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  font-family: "inconsolata", monaco;
+  font-weight: 400;
+  padding: 1px 6px;
+  font-size: 0.8em;
+}
+/******************************************************
+* 01 - LISTS
+*******************************************************/
+ul {
+  margin: 0.7em 0;
+  padding: 0;
+}
+ul li ul,
+ul li ol {
+  margin: 0 0 0 1.4em;
+}
+ul.custom {
+  list-style: none;
+}
+ul.custom li:before {
+  content: '☞';
+  color: #ff5c59;
+  margin-right: 0.7em;
+}
+ul.custom li ul,
+ul.custom li ol {
+  list-style: none;
+}
+ul.custom li ul li:before,
+ul.custom li ol li:before {
+  content: '✍';
+}
+ol {
+  margin: 0.7em 0;
+  padding: 0;
+}
+ol li ol,
+ol li ul {
+  margin: 0 0 0 1.4em;
+}
+dl dt {
+  font-weight: bold;
+  font-size: 20px;
+  font-size: 1rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  margin-bottom: 0;
+}
+dl dd {
+  font-size: 16px;
+  font-size: 0.8rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  margin-left: 1.4em;
+}
+dl.dictionary-style dt {
+  counter-reset: definitions;
+}
+dl.dictionary-style dd {
+  counter-increment: definitions;
+}
+dl.dictionary-style dd:before {
+  content: counter(definitions, decimal) ". ";
+  color: #ff5c59;
+}
+/******************************************************
+* 01 - MISC
+*******************************************************/
+abbr {
+  font-variant: small-caps;
+}
+abbr:hover {
+  cursor: help;
+}
+hr {
+  border: 0;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #ffffff;
+  margin: 0.7em 0;
+}
+.highlighted {
+  background-color: #e7fdbd;
+  margin-left: -0.1em;
+  margin-right: -0.1em;
+  padding-left: 0.1em;
+  padding-right: 0.1em;
+}
+/******************************************************
+*
+* GRID.LESS
+*
+* Set functions for grid creation
+* (fixed & fluid, you choose you weapon)
+* Table of content:
+* 01 - GRID BUNDLE
+* 02 - CONTAINER RELATED CLASSES
+* 03 - COLUMN RELATED CLASSES
+*
+*******************************************************/
+.row [class^="col-"]:first-child {
+  margin-left: 0;
+}
+.wrap {
+  max-width: 90%;
+  margin: 0 auto;
+}
+.wrap-full {
+  width: 100%;
+  margin: 0;
+}
+/******************************************************
+*
+* COMPONENTS/_FORMS.LESS
+*
+* Description:
+* Set default styles for forms elements
+* based upon the _variables.less values
+*
+* Requiered:
+* _variables.less
+* _mixins.less
+* _type.less
+*
+*******************************************************/
+form {
+  margin: 0 0 1.4em;
+}
+fieldset {
+  padding: 0;
+  margin: 0 0 1.4em;
+  border: none;
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+}
+fieldset legend {
+  display: block;
+  width: 100%;
+  font-size: 20px;
+  font-size: 1rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  padding: 0;
+  border-bottom: 1px solid #b2b2b2;
+}
+input,
+textarea,
+select {
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+}
+input,
+textarea {
+  display: block;
+  margin-bottom: 1.4em;
+  padding: 0.35em 0.7em;
+  border: 1px solid #b2b2b2;
+  vertical-align: middle;
+  color: #744f4f;
+  border-radius: 2px;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: border 0.4s ease-in-out;
+  transition: border 0.4s ease-in-out;
+}
+input:focus,
+textarea:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+  outline: thin dotted \9;
+  /* IE6-9 */
+  border: 1px solid #ff5c59;
+}
+input:hover,
+textarea:hover {
+  border: 1px solid #ff5c59;
+}
+input[type="range"] {
+  padding: 0;
+}
+input[type="submit"],
+[type="button"],
+button[type="submit"] {
+  border: none;
+  width: auto;
+  overflow: visible;
+  font-style: normal;
+  line-height: normal;
+  height: auto;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0.46666667em 0.7em;
+  display: inline-block;
+  margin-bottom: 1.4em;
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  border-radius: 2px;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  font-size: 20px;
+  font-size: 1rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+textarea {
+  padding: 0.6em;
+  height: auto;
+  width: 100%;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  margin: 0 .5em 0.2em 0;
+  display: inline-block;
+}
+.radio,
+.checkbox {
+  display: block;
+  margin-right: 1.4em;
+}
+.radio.inline,
+.checkbox.inline {
+  display: inline-block;
+}
+select:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+  outline: thin dotted \9;
+  /* IE6-9 */
+  border: 1px solid #ff5c59;
+}
+label {
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  display: block;
+  margin-bottom: 0.35em;
+  cursor: pointer;
+}
+label.disabled {
+  cursor: default;
+}
+.helper-text {
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  display: block;
+  color: #744f4f;
+  margin-bottom: 0.35em;
+}
+label span,
+label small {
+  font-size: 16px;
+  font-size: 0.8rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  color: #744f4f;
+  margin-bottom: 0.35em;
+}
+html input[disabled],
+html select[disabled],
+html textarea[disabled],
+html button[disabled],
+html input[readonly],
+html select[readonly],
+html textarea[readonly] {
+  cursor: not-allowed;
+  background-color: #eeeeee;
+  border-color: #eeeeee;
+  color: #d1d1d1;
+}
+html input[disabled]:hover,
+html select[disabled]:hover,
+html textarea[disabled]:hover,
+html button[disabled]:hover,
+html input[readonly]:hover,
+html select[readonly]:hover,
+html textarea[readonly]:hover,
+html input[disabled]:focus,
+html select[disabled]:focus,
+html textarea[disabled]:focus,
+html button[disabled]:focus,
+html input[readonly]:focus,
+html select[readonly]:focus,
+html textarea[readonly]:focus {
+  border-color: #eeeeee;
+  -webkit-box-shadow: 0;
+  box-shadow: 0;
+}
+input[type="radio"][disabled],
+input[type="checkbox"][disabled],
+input[type="radio"][readonly],
+input[type="checkbox"][readonly] {
+  background-color: transparent;
+}
+.required,
+input[required] {
+  border-color: #fd795b;
+}
+input:focus:invalid,
+textarea:focus:invalid,
+select:focus:invalid {
+  color: #fd795b;
+  border-color: #fd795b;
+}
+input:focus:invalid:focus,
+textarea:focus:invalid:focus,
+select:focus:invalid:focus {
+  border-color: #fc5029;
+}
+input:invalid,
+textarea:invalid,
+select:invalid {
+  color: #fd795b;
+  border-color: #fd795b;
+}
+input:invalid:focus,
+textarea:invalid:focus,
+select:invalid:focus {
+  border-color: #fc5029;
+}
+/******************************************************
+*
+* COMPONENTS/_BUTTONS.LESS
+*
+*
+*******************************************************/
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+  width: auto;
+  overflow: visible;
+}
+.btn,
+button {
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 1.4em;
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  line-height: normal;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 2px;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: #eeeeee;
+  color: #191111;
+  padding: 0.46666667em 0.7em;
+  font-size: 20px;
+  font-size: 1rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.btn:hover,
+button:hover,
+.btn:focus,
+button:focus {
+  color: #191111;
+  background-color: #f3f3f3;
+}
+.btn:active,
+button:active {
+  background-color: #e9e9e9;
+}
+.btn-large {
+  padding: 0.7em 1.4em;
+  font-size: 20px;
+  font-size: 1rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.btn-medium {
+  padding: 0.46666667em 0.7em;
+  font-size: 20px;
+  font-size: 1rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.btn-small {
+  padding: 0.35em 0.46666667em;
+  font-size: 12px;
+  font-size: 0.6rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.btn-primary {
+  background-color: #ff5c59;
+  color: #ffffff;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  color: #ffffff;
+  background-color: #ff8e8c;
+}
+.btn-primary:active {
+  background-color: #ff524f;
+}
+.btn-secondary {
+  background-color: #82b4bf;
+  color: #ffffff;
+}
+.btn-secondary:hover,
+.btn-secondary:focus {
+  border-color: #82b4bf;
+  background-color: #a4c8d0;
+}
+.btn-secondary:active {
+  background-color: #7bb0bc;
+}
+.btn-red {
+  background-color: #fd795b;
+  color: #ffffff;
+}
+.btn-red:hover,
+.btn-red:focus {
+  color: #ffffff;
+  background-color: #fea28d;
+}
+.btn-red:active {
+  background-color: #fd7151;
+}
+.btn-green {
+  background-color: #e7fdbd;
+  color: #666666;
+}
+.btn-green:hover {
+  color: #666666;
+  background-color: #f9ffee;
+}
+.btn-green:active {
+  background-color: #e3fdb3;
+}
+.btn-yellow {
+  background-color: #fff0aa;
+  color: #666666;
+}
+.btn-yellow:hover {
+  color: #666666;
+  background-color: #fff9dd;
+}
+.btn-yellow:active {
+  background-color: #ffeea0;
+}
+.btn-blue {
+  background-color: #e6faff;
+  color: #666666;
+}
+.btn-blue:hover {
+  color: #666666;
+  background-color: #f0fcff;
+}
+.btn-blue:active {
+  background-color: #dcf8ff;
+}
+/******************************************************
+*
+* COMPONENTS/_TABLES.LESS
+*
+*******************************************************/
+table {
+  width: 100%;
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  margin-bottom: 1.4em;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+table caption {
+  text-align: left;
+  color: #111111;
+  margin-bottom: 1.4em;
+  margin-top: 0;
+}
+table thead,
+table tfoot {
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  text-align: left;
+}
+table thead tr,
+table tfoot tr {
+  background: none;
+}
+table thead tr th,
+table tfoot tr th,
+table thead tr td,
+table tfoot tr td {
+  padding: 0.35em 0.7em;
+}
+table tbody tr {
+  border-top: 1px solid #d1d1d1;
+}
+table tbody tr td {
+  padding: 0.35em 0.7em;
+}
+table.striped tbody tr:nth-child(odd) {
+  background-color: #f6f6f6;
+}
+table.select tbody tr:hover {
+  background-color: #ededed;
+  cursor: pointer;
+}
+table.select tbody tr:hover.warning > td,
+table.select tbody tr:hover td.warning {
+  background-color: #ffea86;
+}
+table.select tbody tr:hover.success > td,
+table.select tbody tr:hover td.success {
+  background-color: #dafc9a;
+}
+table.select tbody tr:hover.info > td,
+table.select tbody tr:hover td.info {
+  background-color: #c2f3ff;
+}
+table.select tbody tr:hover.error > td,
+table.select tbody tr:hover td.error {
+  background-color: #fd5c38;
+}
+table tbody tr.warning > td,
+table tbody tr td.warning {
+  background-color: #fff0aa;
+}
+table tbody tr.success > td,
+table tbody tr td.success {
+  background-color: #e7fdbd;
+}
+table tbody tr.info > td,
+table tbody tr td.info {
+  background-color: #e6faff;
+}
+table tbody tr.error > td,
+table tbody tr td.error {
+  background-color: #fd795b;
+}
+/******************************************************
+*
+* COMPONENTS/_BUTTONS.LESS
+*
+*
+*******************************************************/
+.btn-group {
+  font-size: 0;
+  margin: 0 0 1.4em;
+  padding: 0;
+}
+.btn-group:before,
+.btn-group:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.btn-group:after {
+  clear: both;
+}
+.btn-group:before,
+.btn-group:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.btn-group:after {
+  clear: both;
+}
+.btn-group .btn,
+.btn-group button {
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topright: 0;
+  -moz-border-radius-bottomright: 0;
+  -moz-border-radius-bottomleft: 0;
+  -moz-border-radius-topleft: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border-right: 1px solid #d1d1d1;
+}
+.btn-group .btn:first-child,
+.btn-group button:first-child {
+  -webkit-border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 2px;
+  -webkit-border-top-left-radius: 2px;
+  -moz-border-radius-topright: 0;
+  -moz-border-radius-bottomright: 0;
+  -moz-border-radius-bottomleft: 2px;
+  -moz-border-radius-topleft: 2px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.btn-group .btn:last-child,
+.btn-group button:last-child {
+  -webkit-border-top-right-radius: 2px;
+  -webkit-border-bottom-right-radius: 2px;
+  -webkit-border-bottom-left-radius: 0;
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topright: 2px;
+  -moz-border-radius-bottomright: 2px;
+  -moz-border-radius-bottomleft: 0;
+  -moz-border-radius-topleft: 0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border-right: none;
+}
+.btn-group.btn-large .btn,
+.btn-group.btn-large button {
+  padding: 0.7em 1.4em;
+  font-size: 20px;
+  font-size: 1rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.btn-group.btn-medium .btn,
+.btn-group.btn-medium button {
+  padding: 0.46666667em 0.7em;
+  font-size: 20px;
+  font-size: 1rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+.btn-group.btn-small .btn,
+.btn-group.btn-small button {
+  padding: 0.35em 0.46666667em;
+  font-size: 12px;
+  font-size: 0.6rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+}
+/*******************************************************
+*
+* COMPONENTS/_LABELS.LESS
+*
+* create labels with span for alerts, infos... etc.
+*
+*******************************************************/
+.warning,
+.error,
+.info,
+.success {
+  border-radius: 2px;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  padding: 0.23333333em 0.7em;
+  margin-bottom: 1.4em;
+}
+span.warning,
+.warning {
+  background: #fff0aa;
+}
+span.error,
+.error {
+  background: #fd795b;
+}
+span.info,
+.info {
+  background: #e6faff;
+}
+span.success,
+.success {
+  background: #e7fdbd;
+}
+/******************************************************
+*
+* COMPONENTS/_DIVIDERS.LESS
+*
+*******************************************************/
+.divider {
+  width: 100%;
+  height: 1px;
+  margin: 0.7em 0;
+  overflow: hidden;
+  border-bottom: 1px solid #b2b2b2;
+}
+.divider.dark {
+  border-bottom-color: #666666;
+}
+.divider.black {
+  border-bottom-color: #000000;
+}
+.divider.alert {
+  border-bottom-color: #fd795b;
+}
+.divider.dotted {
+  border-bottom-style: dotted !important;
+}
+/******************************************************
+*
+* COMPONENTS/_MEDIAS.LESS
+*
+* cf http://mobile.smashingmagazine.com/2013/10/24/automate-your-responsive-images-with-mobify-js/
+* pour se faire plaisire avec <picture> element
+*******************************************************/
+img {
+  max-width: 100%;
+  height: auto;
+}
+/******************************************************
+*
+* COMPONENTS/_EMBED-RESPONSIVE.LESS
+*
+* Hack depending on html markup and css
+* for responsive embed objects (youtube videos, vimeo,
+* dailymotion, issue player… etc)
+* 
+* Requiered:
+* _constants.less
+*
+* Default:
+* container for a 16/9 ratio embed
+*
+* HTML markup:
+* <div class="embed-wrapper">
+* 	 embed code goes here
+* </div>
+*
+* Use it as:
+* .embed-wrapper{
+* 	 .embed-responsive(@ratio);
+* }
+* 
+*******************************************************/
+/******************************************************
+*
+* COMPONENTS/_TOOLTIPS.LESS
+*
+* Full CSS tooltips 
+*
+* Requiered:
+* _variables.less
+* _type.less [.size-small()]
+* _mixins.less [.init-rounded()]
+* 
+* HTML markup:
+* <whatever class="tooltip" data-tooltip="Some text to display">
+*
+*******************************************************/
+/******************************************************
+* INIT TOOLTIPS VARIABLES
+*******************************************************/
+/******************************************************
+* TOOLTIP CSS
+*******************************************************/
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.tooltip:before,
+.tooltip:after {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  visibility: hidden;
+  opacity: 0;
+  filter: alpha(opacity=0%);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+}
+.tooltip:before {
+  content: "";
+  position: absolute;
+  background: transparent;
+  border: 6px solid transparent;
+  border-top-color: #262626;
+  z-index: 9999;
+  margin-bottom: -12px;
+}
+.tooltip:after {
+  content: attr(data-tooltip);
+  background: #262626;
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  color: #ffffff;
+  font-size: 16px;
+  font-size: 0.8rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  font-weight: 400;
+  margin: 0;
+  border-radius: 2px;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  margin-left: -18px;
+  padding: .5em 1em;
+  white-space: nowrap;
+}
+.tooltip:hover:before,
+.tooltip:focus:before,
+.tooltip:hover:after,
+.tooltip:focus:after {
+  visibility: visible;
+  opacity: 1;
+  filter: alpha(opacity=100%);
+}
+.tooltip.tooltip-bottom:before,
+.tooltip.tooltip-bottom:after {
+  top: 100%;
+  bottom: auto;
+}
+.tooltip.tooltip-bottom:before {
+  margin-bottom: 0;
+  margin-top: -12px;
+  border-top-color: transparent;
+  border-bottom-color: #262626;
+}
+.tooltip.tooltip-warning:after {
+  background-color: #fff0aa;
+  color: #262626;
+}
+.tooltip.tooltip-warning:before {
+  border-top-color: #fff0aa;
+}
+.tooltip.tooltip-warning.tooltip-bottom:before {
+  border-top-color: transparent;
+  border-bottom-color: #fff0aa;
+}
+.tooltip.tooltip-error:after {
+  background-color: #fd795b;
+}
+.tooltip.tooltip-error:before {
+  border-top-color: #fd795b;
+}
+.tooltip.tooltip-error.tooltip-bottom:before {
+  border-top-color: transparent;
+  border-bottom-color: #fd795b;
+}
+.tooltip.tooltip-info:after {
+  background-color: #e6faff;
+  color: #262626;
+}
+.tooltip.tooltip-info:before {
+  border-top-color: #e6faff;
+}
+.tooltip.tooltip-info.tooltip-bottom:before {
+  border-top-color: transparent;
+  border-bottom-color: #e6faff;
+}
+.tooltip.tooltip-success:after {
+  background-color: #e7fdbd;
+  color: #262626;
+}
+.tooltip.tooltip-success:before {
+  border-top-color: #e7fdbd;
+}
+.tooltip.tooltip-success.tooltip-bottom:before {
+  border-top-color: transparent;
+  border-bottom-color: #e7fdbd;
+}
+/******************************************************
+*
+* COMPONENTS/_SYNTAX_GITHUIB.LESS
+*
+* syntax highliter for jekyll github pages
+*******************************************************/
+.highlight {
+  background: #ffffff;
+  /* Comment */
+  /* Error */
+  /* Keyword */
+  /* Operator */
+  /* Comment.Multiline */
+  /* Comment.Preproc */
+  /* Comment.Single */
+  /* Comment.Special */
+  /* Generic.Deleted */
+  /* Generic.Deleted.Specific */
+  /* Generic.Emph */
+  /* Generic.Error */
+  /* Generic.Heading */
+  /* Generic.Inserted */
+  /* Generic.Inserted.Specific */
+  /* Generic.Output */
+  /* Generic.Prompt */
+  /* Generic.Strong */
+  /* Generic.Subheading */
+  /* Generic.Traceback */
+  /* Keyword.Constant */
+  /* Keyword.Declaration */
+  /* Keyword.Pseudo */
+  /* Keyword.Reserved */
+  /* Keyword.Type */
+  /* Literal.Number */
+  /* Literal.String */
+  /* Name.Attribute */
+  /* Name.Builtin */
+  /* Name.Class */
+  /* Name.Constant */
+  /* Name.Entity */
+  /* Name.Exception */
+  /* Name.Function */
+  /* Name.Namespace */
+  /* Name.Tag */
+  /* Name.Variable */
+  /* Operator.Word */
+  /* Text.Whitespace */
+  /* Literal.Number.Float */
+  /* Literal.Number.Hex */
+  /* Literal.Number.Integer */
+  /* Literal.Number.Oct */
+  /* Literal.String.Backtick */
+  /* Literal.String.Char */
+  /* Literal.String.Doc */
+  /* Literal.String.Double */
+  /* Literal.String.Escape */
+  /* Literal.String.Heredoc */
+  /* Literal.String.Interpol */
+  /* Literal.String.Other */
+  /* Literal.String.Regex */
+  /* Literal.String.Single */
+  /* Literal.String.Symbol */
+  /* Name.Builtin.Pseudo */
+  /* Name.Variable.Class */
+  /* Name.Variable.Global */
+  /* Name.Variable.Instance */
+  /* Literal.Number.Integer.Long */
+}
+.highlight pre {
+  border: none;
+}
+.highlight .lineno {
+  color: #d1d1d1;
+  margin-right: 9px !important;
+}
+.highlight .lineno:after {
+  content: "-";
+}
+.highlight .p {
+  color: #191111;
+}
+.highlight .c {
+  color: #d1d1d1;
+  font-style: italic;
+}
+.highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+.highlight .k {
+  color: #f7931e;
+}
+.highlight .o {
+  color: #f7931e;
+}
+.highlight .cm {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cp {
+  color: #999999;
+  font-weight: bold;
+}
+.highlight .c1 {
+  color: #999988;
+  font-style: italic;
+}
+.highlight .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+.highlight .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+.highlight .gd .x {
+  color: #000000;
+  background-color: #ffaaaa;
+}
+.highlight .ge {
+  font-style: italic;
+}
+.highlight .gr {
+  color: #aa0000;
+}
+.highlight .gh {
+  color: #999999;
+}
+.highlight .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+.highlight .gi .x {
+  color: #000000;
+  background-color: #aaffaa;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+  /*font-weight: bold*/
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .gt {
+  color: #aa0000;
+}
+.highlight .kc {
+  font-weight: bold;
+}
+.highlight .kd {
+  font-weight: bold;
+}
+.highlight .kp {
+  font-weight: bold;
+}
+.highlight .kr {
+  font-weight: bold;
+}
+.highlight .kt {
+  color: #445588;
+  /*font-weight: bold*/
+}
+.highlight .m {
+  color: #191111;
+}
+.highlight .s {
+  color: #dd1144;
+}
+.highlight .na {
+  color: #008080;
+}
+.highlight .nb {
+  color: #0086b3;
+}
+.highlight .nc {
+  color: #8cc63f;
+  /*font-weight: bold*/
+}
+.highlight .no {
+  color: #008080;
+}
+.highlight .ni {
+  color: #800080;
+}
+.highlight .ne {
+  color: #990000;
+  /*font-weight: bold*/
+}
+.highlight .nf {
+  color: #990000;
+  /*font-weight: bold*/
+}
+.highlight .nn {
+  color: #555555;
+}
+.highlight .nt {
+  color: #000080;
+}
+.highlight .nv {
+  color: #008080;
+}
+.highlight .ow {
+  /*font-weight: bold*/
+}
+.highlight .w {
+  color: #bbbbbb;
+}
+.highlight .mf {
+  color: #009999;
+}
+.highlight .mh {
+  color: #009999;
+}
+.highlight .mi {
+  color: #009999;
+}
+.highlight .mo {
+  color: #009999;
+}
+.highlight .sb {
+  color: #dd1144;
+}
+.highlight .sc {
+  color: #dd1144;
+}
+.highlight .sd {
+  color: #dd1144;
+}
+.highlight .s2 {
+  color: #dd1144;
+}
+.highlight .se {
+  color: #dd1144;
+}
+.highlight .sh {
+  color: #dd1144;
+}
+.highlight .si {
+  color: #dd1144;
+}
+.highlight .sx {
+  color: #dd1144;
+}
+.highlight .sr {
+  color: #009926;
+}
+.highlight .s1 {
+  color: #dd1144;
+}
+.highlight .ss {
+  color: #990073;
+}
+.highlight .bp {
+  color: #999999;
+}
+.highlight .vc {
+  color: #008080;
+}
+.highlight .vg {
+  color: #008080;
+}
+.highlight .vi {
+  color: #008080;
+}
+.highlight .il {
+  color: #009999;
+}
+/******************************************************
+*
+* COMPONENTS/NAVIGATION/_NAVIGATION-RESPONSIVE-SMALL.LESS
+*
+* Requires Markup!
+*
+*******************************************************/
+.nav ul {
+  list-style: none;
   margin: 0;
   padding: 0;
 }
-
-html, body { height: 100%; }
-
-body {
-  background-color: #FFF;
-  font: 13.34px Helvetica, Arial, sans-serif;
-  font-size: small;
-  text-align: center;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-size: 100%; }
-
-h1 { margin-bottom: 1em; }
-p { margin: 1em 0; }
-
-a         { color: #00a; }
-a:hover   { color: #000; }
-a:visited { color: #a0a; }
-
-/*****************************************************************************/
-/*
-/* Home
-/*
-/*****************************************************************************/
-.posts {
-  list-style-type: none;
-  margin-bottom: 2em;
-}
-
-.posts li {
-  line-height: 1.75em;
-}
-
-.posts span {
-  color: #aaa;
-  font-family: Monaco, "Courier New", monospace;
-  font-size: 80%;
-}
-
-/*****************************************************************************/
-/*
-/* Site
-/*
-/*****************************************************************************/
-
-.site {
-  font-size: 115%;
-  text-align: justify;
-  width: 42em;
-  margin: 3em auto 2em;
-  line-height: 1.5em;
-}
-
-.header a {
-  font-weight: bold;
+.nav li a {
+  padding: 0.3em 1.2em;
+  display: block;
   text-decoration: none;
 }
-
-.title {
+.nav li a.nav-active {
+  background-color: #e8e8e8;
+  color: #666666;
+  cursor: default;
+  text-decoration: none;
+}
+.nav.nav-vertical li a.nav-active:after {
+  content: "You are here";
+  float: right;
+  color: #dbdbdb;
+}
+.nav.nav-vertical li a.nav-active {
+  color: #666666;
+  background-color: #e8e8e8;
+  cursor: default;
+}
+.nav.nav-vertical li ul a {
+  padding-left: 2.4em;
+}
+.nav-responsive #close-menu {
+  display: none;
+}
+.nav-responsive ul {
+  height: 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-responsive ul li {
+  width: 100%;
+  display: block;
+  text-decoration: none;
+}
+.nav-responsive:target #close-menu {
+  display: block;
+}
+.nav-responsive:target #open-menu {
+  display: none;
+}
+.nav-responsive:target ul {
+  height: auto;
+}
+/******************************************************
+*
+* ICONS.LESS
+*
+* Description:
+* put icon font here
+*
+*******************************************************/
+/******************************************************
+* 02 - QUERIES
+*******************************************************/
+/******************************************************
+*
+* BASE.LESS
+*
+* Set differents mixins for styles
+* Table of content:
+* 01 - INIT.
+* 02 - YOUT CODE GOES HERE
+*
+* TODO:
+* box sizing border box on everything!
+*******************************************************/
+/******************************************************
+* 00 - INIT.
+*******************************************************/
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html,
+body {
+  min-height: 100%;
+}
+html {
+  font-size: 125%;
+}
+body {
+  background: #f5f5f5;
+  border-top: 10px solid #ff5c59;
+}
+/******************************************************
+* NAIGATIONS
+*******************************************************/
+#header-logo {
+  position: fixed;
+  z-index: 9999;
+  color: #191111;
+  left: 20px;
+  top: 20px;
+}
+#menu-btn {
+  position: fixed;
+  z-index: 9999;
+  right: 26px;
+  top: 32px;
+  height: 14px;
+  width: 18px;
+}
+#menu-btn #burger {
+  background: #191111;
+  position: absolute;
+  height: 2px;
+  width: 18px;
+  top: 6px;
+  -webkit-transition: all 0.1s cubic-bezier(0, 1.3, 1, 1.3);
+  transition: all 0.1s cubic-bezier(0, 1.3, 1, 1.3);
+}
+#menu-btn #burger:after,
+#menu-btn #burger:before {
+  content: "";
+  background: #191111;
+  position: absolute;
+  height: 2px;
+  width: 18px;
+  -webkit-transition: all 0.1s cubic-bezier(0, 1.3, 1, 1.3);
+  transition: all 0.1s cubic-bezier(0, 1.3, 1, 1.3);
+}
+#menu-btn #burger:after {
+  top: 6px;
+}
+#menu-btn #burger:before {
+  top: -6px;
+}
+#menu-btn:hover #burger:before {
+  top: -8px;
+}
+#menu-btn:hover #burger:after {
+  top: 8px;
+}
+#menu-btn.active #burger {
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+#menu-btn.active #burger:before {
+  opacity: 0;
+  filter: alpha(opacity=0%);
+}
+#menu-btn.active #burger:after {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  top: 0;
+}
+#top-btn {
+  visibility: hidden;
+  position: fixed;
+  z-index: 9999;
+  height: 14px;
+  width: 18px;
+  right: 26px;
+  top: 49px;
+  opacity: 0;
+  filter: alpha(opacity=0%);
+  -webkit-transform: scale(0.1);
+  -ms-transform: scale(0.1);
+  transform: scale(0.1);
+  -webkit-transition: all 0.2s cubic-bezier(0, 1.35, 1, 1.35);
+  transition: all 0.2s cubic-bezier(0, 1.35, 1, 1.35);
+  text-align: center;
+}
+#top-btn.active {
+  visibility: visible;
+  opacity: 1;
+  filter: alpha(opacity=100%);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+#top-btn img {
+  top: 4px;
+  position: absolute;
+  right: 3px;
+}
+.nav-offkit {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background: #ff5c59;
+  text-align: center;
+  z-index: 999;
+}
+.nav-offkit ul {
+  margin: 0 0 0.7em 0;
+}
+.nav-offkit li {
+  display: block;
+}
+.nav-offkit a {
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  color: #191111;
   display: inline-block;
+  font-size: 16px;
+  font-size: 0.8rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  padding: .4em 2em;
+  text-decoration: none;
+  position: relative;
+  width: 100%;
+}
+.nav-offkit a.active:before {
+  content: "";
+  position: absolute;
+  top: .6em;
+  left: 20%;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-left-color: #f5f5f5;
+}
+.nav-offkit a.active:after {
+  content: "";
+  position: absolute;
+  top: .6em;
+  right: 20%;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-right-color: #f5f5f5;
+}
+#shape-morph {
+  position: fixed;
+  top: -10px;
+  z-index: 995;
+}
+#main-navigation {
   margin-bottom: 2em;
 }
-
-.title a {
-  color: #a00;
+#main-navigation .main-nav {
+  text-align: center;
 }
-
-.title a:hover {
-  color: #000;
+#main-navigation .main-nav:before {
+  content: "summary";
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  font-size: 12px;
+  font-size: 0.6rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 400;
+  width: 100%;
+  text-align: center;
+  display: block;
+  padding-bottom: 9px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid #191111;
 }
-
-.header a.extra {
-  color: #aaa;
-  margin-left: 1em;
+#main-navigation .main-nav:after {
+  content: "";
+  width: 100%;
+  text-align: center;
+  display: block;
+  padding-bottom: 9px;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #191111;
 }
-
-.header a.extra:hover {
-  color: #000;
+#main-navigation .main-nav ul {
+  list-style: none;
+  font-size: 16px;
+  font-size: 0.8rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  margin-top: .2em;
 }
-
-.meta {
-  color: #aaa;
+#main-navigation .main-nav li {
+  margin: 0;
 }
-
-.footer {
-  font-size: 80%;
-  color: #666;
-  border-top: 4px solid #eee;
-  margin-top: 2em;
-  overflow: hidden;
+#main-navigation .main-nav li a {
+  color: #b2b2b2;
+  display: block;
+  width: 100%;
+  font-weight: 300;
+  padding-top: .1em;
+  padding-bottom: .1em;
+  padding-left: 0;
 }
-
-.footer .contact {
+#main-navigation .main-nav li a.active {
+  color: #82b4bf;
+}
+#main-navigation .main-nav li a:hover {
+  background-color: #eeeeee;
+}
+/******************************************************
+* 01 - YOUT CODE GOES HERE.
+*******************************************************/
+#main-content {
+  margin-top: 120px;
+}
+#main-content header {
+  margin-bottom: 6em;
+}
+#main-content header h1 {
+  text-align: center;
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  font-size: 12px;
+  font-size: 0.6rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 400;
+  margin-bottom: 2em;
+}
+#main-content header h2 {
+  text-align: center;
+  margin-top: 0;
+}
+#main-content #main-section {
+  margin-bottom: 6em;
+  position: relative;
+}
+#main-content #main-section:before,
+#main-content #main-section:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+#main-content #main-section:after {
+  clear: both;
+}
+#main-content #main-section:before,
+#main-content #main-section:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+#main-content #main-section:after {
+  clear: both;
+}
+#main-content #main-section #content article h3.infos {
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  font-size: 12px;
+  font-size: 0.6rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 400;
+  padding-bottom: 0;
+  margin-bottom: 1em;
+}
+#main-content #main-section #content article h3.infos:after {
+  content: "";
+  width: 33%;
+  height: 1px;
+  background: #191111;
+  margin-top: .8em;
+}
+#main-content #main-section #content article .metas {
+  margin-top: -6px !important;
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  font-size: 12px;
+  font-size: 0.6rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 400;
+}
+#main-content #main-section #content article .metas h5 {
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  font-size: 12px;
+  font-size: 0.6rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 400;
+  color: #b2b2b2;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+#main-content #main-section #content article .metas h5:before {
+  content: "—";
+  margin-top: 0;
+  position: relative;
+  display: block;
+}
+#main-content #main-section #content article .metas p {
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  font-size: 12px;
+  font-size: 0.6rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 400;
+  color: #b2b2b2;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#main-content #main-section #content article .metas:after {
+  content: "—";
+  position: relative;
+  display: block;
+}
+#main-footer {
+  text-align: center;
+  margin-bottom: 6em;
+}
+#main-footer p {
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  font-size: 12px;
+  font-size: 0.6rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 400;
+}
+.example {
+  background: #ffffff;
+  width: 100%;
+  padding: 18px;
+}
+.example .example-title {
+  font-family: "franklin-gothic-urw", 'helvetica Neue', helvetica, arial, sans-serif;
+  font-size: 12px;
+  font-size: 0.6rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 400;
+  color: #82b4bf;
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+.offkit-title {
+  letter-spacing: .05em;
+  color: #82b4bf;
+}
+.less-title {
+  letter-spacing: .05em;
+  margin-left: .1em;
+  margin-right: .05em;
+}
+/*
+*/
+.description {
+  background: #ffffff;
+}
+.description:before,
+.description:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.description:after {
+  clear: both;
+}
+.description:before,
+.description:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.description:after {
+  clear: both;
+}
+.download-text {
+  padding: 18px;
+}
+.download-text p {
+  position: relative;
+  margin-right: 18px;
+}
+.download-text p:before,
+.download-text p:after {
+  content: "—";
+  position: relative;
+  display: block;
+}
+.download-zip,
+.download-git {
+  width: 50%;
+  margin: 0;
   float: left;
-  margin-right: 3em;
+  height: 175px;
+  position: relative;
+  text-align: center;
 }
-
-.footer .contact a {
-  color: #8085C1;
+.download-zip img,
+.download-git img {
+  margin-top: 2em;
 }
-
-.footer .rss {
-  margin-top: 1.1em;
-  margin-right: -.2em;
-  float: right;
+.download-zip p,
+.download-git p {
+  position: absolute;
+  width: 100%;
+  font-family: "inconsolata", monaco;
+  font-size: 16px;
+  font-size: 0.8rem;
+  margin-top: 0.7em;
+  margin-bottom: 0.46666667em;
+  bottom: 18px;
 }
-
-.footer .rss img {
-  border: 0;
+.download-zip {
+  background-color: #ff5c59;
 }
-
-/*****************************************************************************/
-/*
-/* Posts
-/*
-/*****************************************************************************/
-
-/* standard */
-.post pre {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .4em;
+.download-git {
+  background-color: #82b4bf;
 }
-
-.post ul, .post ol {
-  margin-left: 1.35em;
+/* Landscape phones and up */
+/* portrait tablet and up */
+@media (min-width: 48em) {
+  /******************************************************
+*
+* COMPONENTS/NAVIGATION/_NAVIGATION-RESPONSIVE-LARGE.LESS
+*
+*******************************************************/
+  .nav li a:hover {
+    background-color: #e8e8e8;
+  }
+  .nav.nav-horizontal:before,
+  .nav.nav-horizontal:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+  }
+  .nav.nav-horizontal:after {
+    clear: both;
+  }
+  .nav.nav-horizontal:before,
+  .nav.nav-horizontal:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+  }
+  .nav.nav-horizontal:after {
+    clear: both;
+  }
+  .nav.nav-horizontal li {
+    width: auto;
+    float: left;
+    margin-right: 0.3em;
+  }
+  .nav.nav-vertical li a.nav-active:hover:after {
+    content: "You are here";
+    float: right;
+    color: #dbdbdb;
+  }
+  .nav.nav-vertical li a:hover:after {
+    content: "→";
+    float: right;
+    color: #ff5c59;
+  }
+  .nav-responsive #close-menu {
+    display: none;
+  }
+  .nav-responsive #open-menu {
+    display: none;
+  }
+  .nav-responsive ul {
+    height: auto;
+  }
+  /******************************************************
+* 00 - REINIT
+*******************************************************/
+  .wrap {
+    width: 550px;
+  }
+  /******************************************************
+* 01 - YOUT CODE GOES HERE.
+*******************************************************/
+  #main-content {
+    margin-top: 150px;
+  }
+  .nav-offkit ul {
+    margin: .85em 0 0.7em 0;
+  }
+  .nav-offkit li {
+    display: inline-block;
+  }
+  .nav-offkit a {
+    padding: 1em 2em;
+    display: inline;
+    width: auto;
+  }
+  .nav-offkit a.active:before {
+    display: none;
+  }
+  .nav-offkit a.active:after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    right: auto;
+    top: auto;
+    width: 8px;
+    height: 8px;
+    border: none;
+    margin-left: -4px;
+    border-radius: 4px;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background: #f5f5f5;
+  }
 }
-
-.post code {
-  border: 1px solid #ddd;
-  background-color: #eef;
-  padding: 0 .2em;
+/* Landscape tablet and up */
+@media (min-width: 64em) {
+  /******************************************************
+* 00 - REINIT
+*******************************************************/
+  .col-14 {
+    width: 934px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-14 {
+    margin-left: 952px !important;
+  }
+  .col-13 {
+    width: 866px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-13 {
+    margin-left: 884px !important;
+  }
+  .col-12 {
+    width: 798px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-12 {
+    margin-left: 816px !important;
+  }
+  .col-11 {
+    width: 730px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-11 {
+    margin-left: 748px !important;
+  }
+  .col-10 {
+    width: 662px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-10 {
+    margin-left: 680px !important;
+  }
+  .col-9 {
+    width: 594px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-9 {
+    margin-left: 612px !important;
+  }
+  .col-8 {
+    width: 526px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-8 {
+    margin-left: 544px !important;
+  }
+  .col-7 {
+    width: 458px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-7 {
+    margin-left: 476px !important;
+  }
+  .col-6 {
+    width: 390px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-6 {
+    margin-left: 408px !important;
+  }
+  .col-5 {
+    width: 322px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-5 {
+    margin-left: 340px !important;
+  }
+  .col-4 {
+    width: 254px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-4 {
+    margin-left: 272px !important;
+  }
+  .col-3 {
+    width: 186px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-3 {
+    margin-left: 204px !important;
+  }
+  .col-2 {
+    width: 118px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-2 {
+    margin-left: 136px !important;
+  }
+  .col-1 {
+    width: 50px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-1 {
+    margin-left: 68px !important;
+  }
+  .wrap {
+    width: 934px;
+    max-width: none;
+  }
+  .wrap:before,
+  .wrap:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+  }
+  .wrap:after {
+    clear: both;
+  }
+  .wrap:before,
+  .wrap:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+  }
+  .wrap:after {
+    clear: both;
+  }
+  .row {
+    width: 934px;
+    max-width: none;
+  }
+  .row:before,
+  .row:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+  }
+  .row:after {
+    clear: both;
+  }
+  .row:before,
+  .row:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+  }
+  .row:after {
+    clear: both;
+  }
+  .first {
+    margin-left: 0 !important;
+  }
+  .last {
+    float: right !important;
+  }
+  body {
+    border: 10px solid #ff5c59;
+  }
+  /******************************************************
+* 01 - YOUT CODE GOES HERE.
+*******************************************************/
+  #main-navigation {
+    position: absolute;
+  }
+  #main-navigation .main-nav {
+    text-align: left;
+  }
+  #main-navigation .main-nav:before {
+    display: none;
+  }
+  #main-navigation .main-nav:after {
+    display: none;
+  }
+  #main-navigation .main-nav li a {
+    padding-left: 9px;
+  }
+  #main-navigation.affixed {
+    top: 18px;
+    position: fixed;
+  }
+  .download-zip,
+  .download-git {
+    height: 240px;
+  }
+  .download-zip img,
+  .download-git img {
+    margin-top: 3em;
+  }
 }
-
-.post pre code {
-  border: none;
+/* Large desktop */
+@media (min-width: 77.5em) {
+  /******************************************************
+* 00 - REINIT
+*******************************************************/
+  .col-14 {
+    width: 1074px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-14 {
+    margin-left: 1092px !important;
+  }
+  .col-13 {
+    width: 996px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-13 {
+    margin-left: 1014px !important;
+  }
+  .col-12 {
+    width: 918px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-12 {
+    margin-left: 936px !important;
+  }
+  .col-11 {
+    width: 840px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-11 {
+    margin-left: 858px !important;
+  }
+  .col-10 {
+    width: 762px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-10 {
+    margin-left: 780px !important;
+  }
+  .col-9 {
+    width: 684px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-9 {
+    margin-left: 702px !important;
+  }
+  .col-8 {
+    width: 606px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-8 {
+    margin-left: 624px !important;
+  }
+  .col-7 {
+    width: 528px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-7 {
+    margin-left: 546px !important;
+  }
+  .col-6 {
+    width: 450px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-6 {
+    margin-left: 468px !important;
+  }
+  .col-5 {
+    width: 372px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-5 {
+    margin-left: 390px !important;
+  }
+  .col-4 {
+    width: 294px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-4 {
+    margin-left: 312px !important;
+  }
+  .col-3 {
+    width: 216px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-3 {
+    margin-left: 234px !important;
+  }
+  .col-2 {
+    width: 138px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-2 {
+    margin-left: 156px !important;
+  }
+  .col-1 {
+    width: 60px;
+    position: relative;
+    float: left;
+    margin-left: 18px;
+    padding: 0;
+  }
+  .offset-1 {
+    margin-left: 78px !important;
+  }
+  .wrap {
+    width: 1074px;
+    max-width: none;
+  }
+  .wrap:before,
+  .wrap:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+  }
+  .wrap:after {
+    clear: both;
+  }
+  .wrap:before,
+  .wrap:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+  }
+  .wrap:after {
+    clear: both;
+  }
+  .row {
+    width: 1074px;
+    max-width: none;
+  }
+  .row:before,
+  .row:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+  }
+  .row:after {
+    clear: both;
+  }
+  .row:before,
+  .row:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+  }
+  .row:after {
+    clear: both;
+  }
+  .first {
+    margin-left: 0 !important;
+  }
+  .last {
+    float: right !important;
+  }
+  /******************************************************
+* 01 - YOUT CODE GOES HERE.
+*******************************************************/
+  .download-zip,
+  .download-git {
+    height: 216px;
+  }
+  .download-git img {
+    margin-top: 2em;
+    width: 104px;
+    height: 104px;
+  }
 }
-
-/* terminal */
-.post pre.terminal {
-  border: 1px solid #000;
-  background-color: #333;
-  color: #FFF;
+/******************************************************
+* 04 - PRINT SETTINGS
+*******************************************************/
+@media print {
+  /******************************************************
+*
+* PRINT.LESS
+*
+* Set differents styles for print
+* Inspired by http://drublic.de/blog/printing-the-web/
+*
+*******************************************************/
+  @page {
+    margin: 2cm 1.5cm;
+  }
+  html {
+    font-size: 75%;
+  }
+  body {
+    font-color: #000;
+  }
+  .nav,
+  nav,
+  .footer-main {
+    display: none;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  a[href^="#"]:after,
+  a[href^="javascript"]:after {
+    content: "";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  header {
+    page-break-after: avoid;
+  }
 }
-
-.post pre.terminal code {
-  background-color: #333;
-}
+/******************************************************
+* 05 - FOR DEBUGGING ONLY (remove for production)
+*******************************************************/

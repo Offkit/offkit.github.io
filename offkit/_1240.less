@@ -1,0 +1,32 @@
+/******************************************************
+* 00 - REINIT
+*******************************************************/
+
+//Set default settings
+@gridColumnWidth: 60px;
+@gridGutterWidth: 18px;
+@gridColumnCount: 14;
+
+#grid > .gridBasic(@gridColumnWidth, @gridGutterWidth, @gridColumnCount);
+
+html{
+}
+body{
+}
+
+/******************************************************
+* 01 - YOUT CODE GOES HERE.
+*******************************************************/
+
+.download-zip,
+.download-git{
+	.col-size-height(3);
+}
+
+.download-git{
+	img{
+		margin-top: 2em;
+		width: 104px;
+		height: 104px;
+	}
+}

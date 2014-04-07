@@ -1,4 +1,6 @@
-<nav class="nav" role="navigation" >
+<a href="#" id="menu-btn"><span id="burger"></span></a>
+<a href="#" id="top-btn"><img src="/img/arrow-up.svg" alt="" width="10" height="9"></a>
+<nav id="nav-offkit" class="nav-offkit" role="navigation" >
     <ul>
         {% for p in site.pages %}
         <li>
@@ -6,4 +8,29 @@
         </li>
         {% endfor %}
     </ul>
+
 </nav>
+<svg version="1.1" id="shape-morph" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 40" enable-background="new 0 0 100 40" preserveAspectRatio="none" height="40">
+	<path id="shape" fill="#FF5C59" d="M0,0L100,0L100,10,100 10, 0 10,0 10Z">
+		<animate id="morph-anim" attributeName = "d" begin = "indefinite" dur=".35s" keySplines="0 0 1 1" repeatCount="0"
+			from="M0,0L100,0L100,10,100 10, 0 10,0 10Z"
+			to="M0,0L100,0L100,10,100 10, 0 10,0 10Z"
+			values="M0,0L100,0L100,10,C100 10, 0 10,0 10Z;
+					M0,0L100,0L100,10,C98 18, 2 12,0 10Z;
+					M0,0L100,0L100,10,C95 15, 5 15,0 10Z;
+					M0,0L100,0L100,10,C90 20, 10 20,0 10Z;
+					M0,0L100,0L100,10,C80 30, 20 30,0 10Z;
+					M0,0L100,0L100,10,C70 40, 30 40,0 10Z;
+					M0,0L100,0L100,10,C65 45, 35 45,0 10Z;
+					M0,0L100,0L100,10,C60 50, 40 50,0 10Z;
+					M0,0L100,0L100,10,C65 45, 35 45,0 10Z;
+					M0,0L100,0L100,10,C70 40, 30 40,0 10Z;
+					M0,0L100,0L100,10,C80 30, 20 30,0 10Z;
+					M0,0L100,0L100,10,C90 20, 10 20,0 10Z;
+					M0,0L100,0L100,10,C95 15, 5 15,0 10Z;
+					M0,0L100,0L100,10,C98 18, 2 12,0 10Z;
+					M0,0L100,0L100,10,C100 10, 0 10,0 10Z;"
+		/>
+	</path>
+</svg>

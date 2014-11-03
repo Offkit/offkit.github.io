@@ -1,0 +1,60 @@
+/******************************************************
+* 00 - REINIT
+*******************************************************/
+
+//Set default settings
+@gridColumnWidth: 50px;
+@gridGutterWidth: 18px;
+@gridColumnCount: 14;
+
+#grid > .gridBasic(@gridColumnWidth, @gridGutterWidth, @gridColumnCount);
+
+html{
+}
+body{
+	border: 10px solid @primary;
+}
+
+/******************************************************
+* 01 - YOUT CODE GOES HERE.
+*******************************************************/
+.nav-offkit{	
+}
+
+#main-navigation{
+	position: absolute;
+
+	.main-nav{
+		text-align: left;
+		&:before{
+			display: none;
+		}
+		&:after{
+			display: none;
+		}
+		li{		
+			a{
+				padding-left: 9px;
+			}
+		}
+	}
+	&.affixed{
+		top:18px;
+		position: fixed;
+	}
+}
+
+.download-zip,
+.download-git,
+.download-sass{
+	img{
+		margin-top: 3em;
+	}
+	height: 240px;
+}
+
+.col-45{
+	width: 333px;
+	float: left;
+	margin-left: 18px;
+}

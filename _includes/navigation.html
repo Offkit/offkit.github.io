@@ -1,0 +1,23 @@
+<a href="#" id="menu-btn"><span id="burger"></span></a>
+<a href="#" id="top-btn"><img src="/img/arrow-up.svg" alt="" width="10" height="9"></a>
+<nav id="nav-offkit" class="nav-offkit" role="navigation" >
+<a {% if "/" == page.url %}class="active"{% endif %} id="offkit-title-menu" href="/" title="offkit home"><span>offkit</span></a>
+    <ul>
+        <li>
+        	<a {% if "/getting-started/" == page.url %}class="active"{% endif %} href="{{ site.baseurl }}getting-started/" title="getting started - how to do it well"><span>getting started</span></a>
+        </li>
+        <li>
+        	<a {% if "/documentation/" == page.url %}class="active"{% endif %} href="/documentation/" title="documentation - everything you need to know"><span>documentation</span></a>
+        </li>
+        <li>
+        	<a {% if "/add-ons/" == page.url %}class="active"{% endif %} href="/add-ons/" title="components - add-ons"><span>components</span></a>
+        </li>
+        <li><a title="about offkit"><span>about</span></a></li>
+    </ul>
+	
+	<svg version="1.1" id="shape-morph" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 60" enable-background="new 0 0 100 60" preserveAspectRatio="none" height="60">
+		<path id="shape" fill="#FF5C59" d="M0e-10,0 L100,0 L100,10 C100,10 0,10 -10e-10,10 C0e-10,10 0e-10,0 0e-10,0 Z" />
+	</svg>
+</nav>
+

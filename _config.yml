@@ -1,5 +1,5 @@
 name: Offkit - Documentation
 markdown: redcarpet
-pygments: true
-relative_permalinks: true
+highlighter: true
 permalink: pretty
+baseurl: http://offkit.github.io/

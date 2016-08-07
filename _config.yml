@@ -1,5 +1,4 @@
 name: Offkit - Documentation
-markdown: redcarpet
 highlighter: true
 permalink: pretty
 baseurl: http://offkit.github.io/

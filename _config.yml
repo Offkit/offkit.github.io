@@ -1,4 +1,4 @@
 name: Offkit - Documentation
-highlighter: true
+highlighter: rouge
 permalink: pretty
 baseurl: http://offkit.github.io/
